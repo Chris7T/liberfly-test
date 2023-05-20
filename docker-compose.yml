@@ -1,0 +1,51 @@
+version: '3'
+services:
+    app:
+        build:
+            context: ./.docker/app
+            dockerfile: Dockerfile
+        container_name: app
+        image: app
+        volumes:
+            - '.:/var/www'
+        networks:
+            - liberflynet
+        depends_on:
+            - mysql
+            - redis
+    nginx:
+        build:
+            context: ./.docker/nginx
+            dockerfile: Dockerfile
+        container_name: nginx
+        image: nginx
+        volumes:
+            - '.:/var/www'
+        restart: always
+        tty: true
+        networks:
+            - liberflynet
+        ports:
+            - "80:80"
+        depends_on:
+            - app
+    mysql:
+        image: mysql:latest
+        container_name: mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: 'mysql'
+            MYSQL_DATABASE: 'liberfly'
+            MYSQL_USER: 'mysql'
+            MYSQL_PASSWORD: 'mysql'
+        networks:
+            - liberflynet
+        ports:
+            - "3306:3306"
+    redis:
+        image: redis
+        networks:
+            - liberflynet
+networks:
+    liberflynet:
+        driver: bridge
