@@ -2,7 +2,7 @@
 
 namespace App\Actions\User;
 
-use App\Repositories\UserInterfaceRepository;
+use App\Repositories\User\UserInterfaceRepository;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class UserEmailUniqueVerifyAction

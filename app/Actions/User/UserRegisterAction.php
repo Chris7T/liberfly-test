@@ -2,7 +2,7 @@
 
 namespace App\Actions\User;
 
-use App\Repositories\UserInterfaceRepository;
+use App\Repositories\User\UserInterfaceRepository;
 use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Facades\JWTAuth;
 

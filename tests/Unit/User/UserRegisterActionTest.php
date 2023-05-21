@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use App\Actions\User\UserEmailUniqueVerifyAction;
 use App\Actions\User\UserRegisterAction;
 use App\Models\User;
-use App\Repositories\UserInterfaceRepository;
+use App\Repositories\User\UserInterfaceRepository;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;

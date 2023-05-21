@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Actions\User\UserLoginAction;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UserLoginRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response as HttpResponse;

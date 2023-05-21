@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use App\Actions\User\UserLoginAction;
 use App\Models\User;
-use App\Repositories\UserInterfaceRepository;
+use App\Repositories\User\UserInterfaceRepository;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;

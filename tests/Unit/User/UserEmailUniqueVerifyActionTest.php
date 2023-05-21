@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use App\Actions\User\UserEmailUniqueVerifyAction;
 use App\Models\User;
-use App\Repositories\UserInterfaceRepository;
+use App\Repositories\User\UserInterfaceRepository;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 

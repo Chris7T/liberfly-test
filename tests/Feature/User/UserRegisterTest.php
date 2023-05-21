@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\User;
 
+use App\Actions\User\UserRegisterAction;
 use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
@@ -108,11 +109,11 @@ class UserRegisterTest extends TestCase
             ]);
     }
 
-    public function test_expected_when_jwt_auth_throw_exception()
+    public function test_expected_server_error_when_jwt_auth_throw_exception()
     {
         $email = $this->faker->unique()->email();
         $name = $this->faker->name();
-        $password =  $this->faker->password();
+        $password =  $this->faker->password(8);
         $request = [
             'email' => $email,
             'name' => $name,
@@ -120,10 +121,11 @@ class UserRegisterTest extends TestCase
             'password_confirmation' =>  $password,
         ];
 
-        $jwtAuthMock = Mockery::mock('overload:Tymon\JWTAuth\JWTAuth');
-        $jwtAuthMock->shouldReceive('lockSubject')->andReturnSelf();
-        $jwtAuthMock->shouldReceive('fromUser')
+        $userRegisterActionMock = Mockery::mock(UserRegisterAction::class);
+        $userRegisterActionMock->shouldReceive('__invoke')
             ->andThrow(new JWTException('Unable to generate token'));
+
+        $this->app->instance(UserRegisterAction::class, $userRegisterActionMock);
 
         $response = $this->postJson(route(self::ROUTE, $request));
 
@@ -135,7 +137,6 @@ class UserRegisterTest extends TestCase
 
     public function test_expected_user_token()
     {
-        $token = $this->faker->regexify('[A-Za-z0-9]{10}');
         $email = $this->faker->unique()->email();
         $name = $this->faker->name();
         $password =  $this->faker->password(8);
@@ -146,16 +147,11 @@ class UserRegisterTest extends TestCase
             'password_confirmation' =>  $password,
         ];
 
-        $jwtAuthMock = Mockery::mock('overload:Tymon\JWTAuth\JWTAuth');
-        $jwtAuthMock->shouldReceive('lockSubject')->andReturnSelf();
-
-        $jwtAuthMock->shouldReceive('fromUser')->andReturn($token);
-
         $response = $this->postJson(route(self::ROUTE, $request));
 
         $response->assertStatus(Response::HTTP_CREATED)
-            ->assertJson([
-                'token' => $token,
+            ->assertJsonStructure([
+                'token',
             ]);
 
         $this->assertDatabaseHas('users', [
