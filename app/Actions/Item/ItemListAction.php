@@ -5,7 +5,6 @@ namespace App\Actions\Item;
 use App\Repositories\Item\ItemInterfaceRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 
 class ItemListAction
 {
@@ -14,16 +13,10 @@ class ItemListAction
     ) {
     }
 
-    public function __invoke(int $page): LengthAwarePaginator
+    public function __invoke(): LengthAwarePaginator
     {
         $userId = Auth::id();
 
-        return Cache::remember(
-            "items-list-user-{$userId}-page-{$page}",
-            config('cache.time.one_month'),
-            function () use ($userId) {
-                return $this->itemInterfaceRepository->get($userId);
-            }
-        );
+        return $this->itemInterfaceRepository->get($userId);
     }
 }

@@ -75,7 +75,7 @@ class UserLoginController extends Controller
         try {
             $token = ($this->userLoginAction)($request->input('email'), $request->input('password'));
 
-            return Response::json(['token' => $token], HttpResponse::HTTP_CREATED);
+            return Response::json(['token' => $token], HttpResponse::HTTP_OK);
         } catch (UnauthorizedHttpException $ex) {
             return Response::json(
                 ['message' => $ex->getMessage()],

@@ -138,7 +138,7 @@ class UserLoginTest extends TestCase
 
         $response = $this->postJson(route(self::ROUTE, $request));
 
-        $response->assertStatus(Response::HTTP_CREATED)
+        $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
                 'token',
             ]);

@@ -10,7 +10,7 @@ class ItemDeleteAction
 {
     public function __construct(
         private readonly ItemInterfaceRepository $itemInterfaceRepository,
-        private readonly ItemExistsVerify $itemExistsVerify
+        private readonly ItemExistsVerify $itemExistsVerify,
     ) {
     }
 

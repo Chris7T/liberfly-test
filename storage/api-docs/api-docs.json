@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API do meu projeto",
-        "description": "Esta é a documentação da API do meu projeto Laravel",
+        "title": "Liberfly Test API",
+        "description": "Liberfly Test API",
         "version": "1.0.0"
     },
     "paths": {

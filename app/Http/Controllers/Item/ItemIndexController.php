@@ -6,7 +6,6 @@ use App\Actions\Item\ItemListAction;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Item\ItemRegisterResource;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Support\Facades\Log;
@@ -60,10 +59,10 @@ class ItemIndexController extends Controller
      * )
      */
 
-    public function __invoke(Request $request): JsonResponse|AnonymousResourceCollection
+    public function __invoke(): JsonResponse|AnonymousResourceCollection
     {
         try {
-            return ItemRegisterResource::collection(($this->itemListAction)($request->input('page', 1)));
+            return ItemRegisterResource::collection(($this->itemListAction)());
         } catch (\Exception $ex) {
             Log::critical('Controller: ' . self::class, ['exception' => $ex->getMessage()]);
 
