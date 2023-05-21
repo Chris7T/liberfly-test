@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRegisterRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response as HttpResponse;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class UserRegisterController extends Controller

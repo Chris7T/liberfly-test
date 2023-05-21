@@ -8,12 +8,13 @@ use Illuminate\Routing\Controller as BaseController;
 
 /**
  * @OA\Info(
- *     title="API do meu projeto",
+ *     title="Liberfly Test API",
  *     version="1.0.0",
- *     description="Esta é a documentação da API do meu projeto Laravel",
+ *     description="Liberfly Test API",
  * )
  */
 class Controller extends BaseController
 {
-    use AuthorizesRequests, ValidatesRequests;
+    use AuthorizesRequests;
+    use ValidatesRequests;
 }

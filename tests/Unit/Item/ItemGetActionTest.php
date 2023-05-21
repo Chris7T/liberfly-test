@@ -6,8 +6,8 @@ use App\Actions\Item\ItemExistsVerify;
 use App\Actions\Item\ItemGetAction;
 use App\Repositories\Item\ItemInterfaceRepository;
 use Mockery;
-use Tests\TestCase;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Tests\TestCase;
 
 class ItemGetActionTest extends TestCase
 {

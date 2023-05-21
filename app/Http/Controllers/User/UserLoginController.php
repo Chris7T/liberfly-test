@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserLoginRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response as HttpResponse;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class UserLoginController extends Controller

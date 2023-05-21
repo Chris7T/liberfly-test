@@ -8,8 +8,8 @@ use App\Repositories\Item\ItemInterfaceRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Mockery;
-use Tests\TestCase;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Tests\TestCase;
 
 class ItemDeleteActionTest extends TestCase
 {

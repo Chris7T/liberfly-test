@@ -6,8 +6,8 @@ use App\Actions\Item\ItemExistsVerify;
 use App\Repositories\Item\ItemInterfaceRepository;
 use Illuminate\Support\Facades\Auth;
 use Mockery;
-use Tests\TestCase;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Tests\TestCase;
 
 class ItemExistsVerifyTest extends TestCase
 {

@@ -7,8 +7,8 @@ use App\Actions\User\UserRegisterAction;
 use App\Models\User;
 use App\Repositories\User\UserInterfaceRepository;
 use Illuminate\Support\Facades\Hash;
-use Tests\TestCase;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
+use Tests\TestCase;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserRegisterActionTest extends TestCase
