@@ -53,15 +53,19 @@ cp .env.example .env
 ```
 php artisan key:generate
 ```
-8. - Run the migrations
+8. - Generate the JWT secret
+```
+php artisan jwt:secret
+```
+9. - Run the migrations
 ```
 php artisan migrate
 ```
-9. - Run the tests
+10. - Run the tests
 ```
 php artisan test
 ```
-10. - Generate documentation
+11. - Generate documentation
 ```
 php artisan l5-swagger:generate
 ```
